@@ -8,12 +8,21 @@ class JokesService {
   final String apiUrl = 'https://official-joke-api.appspot.com/jokes/random/5';
 
   Future<List<Joke>> fetchJokes() async {
-    final response = await http.get(Uri.parse(apiUrl));
-    if (response.statusCode == 200) {
-      final List<dynamic> jokesJson = jsonDecode(response.body);
-      return jokesJson.map((json) => Joke.fromJson(json)).toList();
-    } else {
-      throw Exception('Failed to fetch jokes');
+    try {
+      final response = await http
+          .get(Uri.parse(apiUrl))
+          .timeout(Duration(seconds: 7), onTimeout: () {
+        throw Exception('Request timed out after 7 seconds');
+      });
+
+      if (response.statusCode == 200) {
+        final List<dynamic> jokesJson = jsonDecode(response.body);
+        return jokesJson.map((json) => Joke.fromJson(json)).toList();
+      } else {
+        throw Exception('Failed to fetch jokes');
+      }
+    } catch (e) {
+      throw Exception('Failed to fetch jokes: $e');
     }
   }
 
