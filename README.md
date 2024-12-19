@@ -28,7 +28,7 @@ Make sure you have the following tools installed on your machine:
 To get started, clone the repository to your local machine using Git:
 
 ```bash
-git clone https://github.com/yourusername/jokesapp.git
+git clone https://github.com/IsuraViranga/JokesApp.git
 ```
 
 ### Installing Dependencies
