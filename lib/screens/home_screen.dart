@@ -32,6 +32,18 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.account_circle, size: 28),
+            color: Colors.white, // Profile icon color
+            onPressed: () {
+              // Handle profile icon press
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Profile icon pressed!")),
+              );
+            },
+          ),
+        ],
       ),
       body: Container(
         decoration: const BoxDecoration(
