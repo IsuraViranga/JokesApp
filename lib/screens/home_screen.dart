@@ -22,7 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final jokes = Provider.of<JokesProvider>(context).jokes;
+    // final jokes = Provider.of<JokesProvider>(context).jokes;
+    final jokesProvider = Provider.of<JokesProvider>(context);
+    final jokes = jokesProvider.jokes;
 
     return Scaffold(
       appBar: AppBar(
@@ -85,16 +87,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(), // Smooth scrolling
-              itemCount: jokes.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: JokeCard(joke: jokes[index]),
-                );
-              },
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(), // Smooth scrolling
+                    itemCount: jokes.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: JokeCard(joke: jokes[index]),
+                      );
+                    },
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    jokesProvider.loadJokes();
+                  },
+                  child: Text('Fetch New Jokes'),
+                ),
+              ],
             ),
           ),
         ),
@@ -126,4 +140,5 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
 }

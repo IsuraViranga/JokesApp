@@ -26,18 +26,18 @@ class LoadingScreen extends StatelessWidget {
                   end: Alignment.bottomCenter,
                 ),
               ),
-              child: Center(
+              child: const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Icon for loading
-                    const Icon(
+                    Icon(
                       Icons.emoji_emotions, // Fun emoji icon
                       size: 100,
                       color: Colors.white,
                     ),
-                    const SizedBox(height: 24),
-                    const Text(
+                    SizedBox(height: 24),
+                    Text(
                       'Loading jokes...',
                       style: TextStyle(
                         fontSize: 24,
@@ -45,9 +45,9 @@ class LoadingScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 16),
                     // Custom loading indicator
-                    const CircularProgressIndicator(
+                    CircularProgressIndicator(
                       color: Colors.white,
                       strokeWidth: 4,
                     ),
