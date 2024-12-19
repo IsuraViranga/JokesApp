@@ -29,3 +29,25 @@ To get started, clone the repository to your local machine using Git:
 
 ```bash
 git clone https://github.com/yourusername/jokesapp.git
+```
+
+### Installing Dependencies
+
+After cloning the repository, navigate into the project directory and install the required dependencies by running the following command
+
+```bash
+cd JokesApp
+flutter pub get
+```
+
+This will download and install all the necessary packages listed in the pubspec.yaml file for your Flutter project.
+
+### Running the Project
+
+```bash
+flutter run
+```
+
+This will build the project and launch the app on your device or emulator.
+
+
