@@ -3,8 +3,22 @@ import 'package:provider/provider.dart';
 import '../providers/jokes_provider.dart';
 import '../widgets/joke_card.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  // List of bottom navigation items
+  final List<Widget> _bottomNavigationItems = [
+    Icon(Icons.home, size: 30, color: Colors.white),
+    Icon(Icons.search, size: 30, color: Colors.white),
+    Icon(Icons.settings, size: 30, color: Colors.white),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +98,31 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blue,
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, size: 30,color: Colors.white,),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search, size: 30,color: Colors.white,),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings, size: 30,color: Colors.white,),
+            label: 'Settings',
+          ),
+        ],
       ),
     );
   }
