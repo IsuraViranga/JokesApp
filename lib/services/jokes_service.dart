@@ -11,7 +11,7 @@ class JokesService {
     try {
       final response = await http
           .get(Uri.parse(apiUrl))
-          .timeout(Duration(seconds: 7), onTimeout: () {
+          .timeout(Duration(seconds: 2), onTimeout: () {
         throw Exception('Request timed out after 7 seconds');
       });
 
